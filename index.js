@@ -793,9 +793,9 @@ var Firebase = (function (_super) {
     Firebase = __decorate([
         Plugin({
             pluginName: 'Firebase',
-            plugin: 'cordova-plugin-firebase',
+            plugin: 'cordova-plugin-firebase-lib',
             pluginRef: 'FirebasePlugin',
-            repo: 'https://github.com/arnesson/cordova-plugin-firebase',
+            repo: 'https://github.com/arnesson/cordova-plugin-firebase-lib',
             platforms: ['Android', 'iOS']
         })
     ], Firebase);
