@@ -18,195 +18,170 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Injectable } from '@angular/core';
-import { Cordova, IonicNativePlugin, Plugin } from '@ionic-native/core';
-import { Observable } from 'rxjs/Observable';
+import { Plugin, Cordova, IonicNativePlugin } from '@ionic-native/core';
+import { Observable } from 'rxjs';
 /**
- * @name Firebase
+ * @name Firebase X
  * @description
- * This plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project! Android and iOS supported (including iOS 10).
+ * This plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project! Android and iOS supported.
+ * It is a maintained fork from unmaintained ionic-navite plugin called Firebase.
  *
  * @usage
  * ```typescript
- * import { Firebase } from '@ionic-native/firebase';
+ * import { FirebaseX } from '@ionic-native/firebase-x';
  *
- * constructor(private firebase: Firebase) { }
+ *
+ * constructor(private firebaseX: FirebaseX) { }
  *
  * ...
  *
- * this.firebase.getToken()
+ *
+ * this.firebaseX.getToken()
  *   .then(token => console.log(`The token is ${token}`)) // save the token server-side and use it to push notifications to this device
  *   .catch(error => console.error('Error getting token', error));
  *
- * this.firebase.onNotificationOpen()
- *    .subscribe(data => console.log(`User opened a notification ${data}`));
+ * this.firebaseX.onMessageReceived()
+ *   .subscribe(data => console.log(`User opened a notification ${data}`));
  *
- * this.firebase.onTokenRefresh()
+ * this.firebaseX.onTokenRefresh()
  *   .subscribe((token: string) => console.log(`Got a new token ${token}`));
- *
  * ```
+ * @interfaces
+ * IChannelOptions
+ *
  */
-var Firebase = (function (_super) {
-    __extends(Firebase, _super);
-    function Firebase() {
+var FirebaseX = (function (_super) {
+    __extends(FirebaseX, _super);
+    function FirebaseX() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Get the device token
+     * Get the device token.
      * @return {Promise<null | string>} Note that token will be null if it has not been established yet
      */
-    /**
-       * Get the device token
-       * @return {Promise<null | string>} Note that token will be null if it has not been established yet
-       */
-    Firebase.prototype.getToken = /**
-       * Get the device token
-       * @return {Promise<null | string>} Note that token will be null if it has not been established yet
-       */
-    function () {
+    FirebaseX.prototype.getToken = function () {
         return;
     };
     /**
-     * Get notified when a token is refreshed
+     * Get notified when a token is refreshed.
      * @return {Observable<any>}
      */
-    /**
-       * Get notified when a token is refreshed
-       * @return {Observable<any>}
-       */
-    Firebase.prototype.onTokenRefresh = /**
-       * Get notified when a token is refreshed
-       * @return {Observable<any>}
-       */
-    function () {
+    FirebaseX.prototype.onTokenRefresh = function () {
         return;
     };
     /**
-     * Get notified when the user opens a notification
+     * Registers a callback function to invoke when:
+     * - a notification or data message is received by the app
+     * - a system notification is tapped by the user
      * @return {Observable<any>}
      */
-    /**
-       * Get notified when the user opens a notification
-       * @return {Observable<any>}
-       */
-    Firebase.prototype.onNotificationOpen = /**
-       * Get notified when the user opens a notification
-       * @return {Observable<any>}
-       */
-    function () {
+    FirebaseX.prototype.onMessageReceived = function () {
         return;
     };
     /**
-     * Grant permission to receive push notifications
+     * Grant permission to receive push notifications (will trigger prompt) and return hasPermission: true. iOS only (Android will always return true).
      * @return {Promise<any>}
      */
-    /**
-       * Grant permission to receive push notifications
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.grantPermission = /**
-       * Grant permission to receive push notifications
-       * @return {Promise<any>}
-       */
-    function () {
+    FirebaseX.prototype.grantPermission = function () {
         return;
     };
     /**
-     * Check permission to receive push notifications
+     * Check permission to receive push notifications and return hasPermission: true. iOS only (Android will always return true).
      * @return {Promise<{isEnabled: boolean}>}
      */
-    /**
-       * Check permission to receive push notifications
-       * @return {Promise<{isEnabled: boolean}>}
-       */
-    Firebase.prototype.hasPermission = /**
-       * Check permission to receive push notifications
-       * @return {Promise<{isEnabled: boolean}>}
-       */
-    function () {
+    FirebaseX.prototype.hasPermission = function () {
         return;
     };
     /**
-     * Set icon badge number. Set to 0 to clear the badge.
+     * Unregister from firebase, used to stop receiving push notifications. Call this when you logout user from your app.
+     */
+    FirebaseX.prototype.unregister = function () {
+        return;
+    };
+    /**
+     * Set a number on the icon badge. Set 0 to clear the badge
      * @param {number} badgeNumber
      * @return {Promise<any>}
      */
-    /**
-       * Set icon badge number. Set to 0 to clear the badge.
-       * @param {number} badgeNumber
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.setBadgeNumber = /**
-       * Set icon badge number. Set to 0 to clear the badge.
-       * @param {number} badgeNumber
-       * @return {Promise<any>}
-       */
-    function (badgeNumber) {
+    FirebaseX.prototype.setBadgeNumber = function (badgeNumber) {
         return;
     };
     /**
-     * Get icon badge number
+     * Get icon badge number.
      * @return {Promise<any>}
      */
-    /**
-       * Get icon badge number
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.getBadgeNumber = /**
-       * Get icon badge number
-       * @return {Promise<any>}
-       */
-    function () {
+    FirebaseX.prototype.getBadgeNumber = function () {
         return;
     };
     /**
-     * Subscribe to a topic
+     * Clear all pending notifications from the drawer.
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.clearAllNotifications = function () {
+        return;
+    };
+    /**
+     * Subscribe to a topic. Topic messaging allows you to send a message to multiple devices that have opted in to a particular topic.
      * @param {string} topic
      * @return {Promise<any>}
      */
-    /**
-       * Subscribe to a topic
-       * @param {string} topic
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.subscribe = /**
-       * Subscribe to a topic
-       * @param {string} topic
-       * @return {Promise<any>}
-       */
-    function (topic) {
+    FirebaseX.prototype.subscribe = function (topic) {
         return;
     };
     /**
-     * Unsubscribe from a topic
+     * Unsubscribe from a topic. This will stop you receiving messages for that topic.
      * @param {string} topic
      * @return {Promise<any>}
      */
-    /**
-       * Unsubscribe from a topic
-       * @param {string} topic
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.unsubscribe = /**
-       * Unsubscribe from a topic
-       * @param {string} topic
-       * @return {Promise<any>}
-       */
-    function (topic) {
+    FirebaseX.prototype.unsubscribe = function (topic) {
         return;
     };
     /**
-     * Unregister from firebase, used to stop receiving push notifications.
-     * Call this when you logout user from your app.
+     * Android 8+ only. Creates a custom channel to be used by notification messages which have the channel property set in the message payload to the id of the created channel:
+     * - for background (system) notifications: android.notification.channel_id
+     * - for foreground/data notifications: data.notification_android_channel_id
+     *
+     * Calling on Android 7 or below or another platform will have no effect.
+     * @param {IChannelOptions} channelOptions
+     * @return {Promise<any>}
      */
+    FirebaseX.prototype.createChannel = function (channelOptions) {
+        return;
+    };
     /**
-       * Unregister from firebase, used to stop receiving push notifications.
-       * Call this when you logout user from your app.
-       */
-    Firebase.prototype.unregister = /**
-       * Unregister from firebase, used to stop receiving push notifications.
-       * Call this when you logout user from your app.
-       */
-    function () {
+     * Android 8+ only. Overrides the properties for the default channel.
+     * The default channel is used if no other channel exists or is specified in the notification.
+     * Any options not specified will not be overridden. Should be called as soon as possible (on app start) so default notifications will work as expected.
+     * Calling on Android 7 or below or another platform will have no effect.
+     * @param {IChannelOptions} channelOptions
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.setDefaultChannel = function (channelOptions) {
+        return;
+    };
+    /**
+     * Android 8+ only. Removes a previously defined channel.
+     * Calling on Android 7 or below or another platform will have no effect.
+     * @param {string} channelID
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.deleteChannel = function (channelID) {
+        return;
+    };
+    /**
+     * Android 8+ only. Gets a list of all channels.
+     * Calling on Android 7 or below or another platform will have no effect.
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.listChannels = function () {
+        return;
+    };
+    /**
+     * Enable/disable analytics collection (useful for GDPR/privacy settings).
+     * @param {boolean} enabled
+     * @returns {Promise<any>}
+     */
+    FirebaseX.prototype.setAnalyticsCollectionEnabled = function (enabled) {
         return;
     };
     /**
@@ -215,37 +190,7 @@ var Firebase = (function (_super) {
      * @param {Object} data
      * @return {Promise<any>}
      */
-    /**
-       * Log an event using Analytics
-       * @param {string} type
-       * @param {Object} data
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.logEvent = /**
-       * Log an event using Analytics
-       * @param {string} type
-       * @param {Object} data
-       * @return {Promise<any>}
-       */
-    function (type, data) {
-        return;
-    };
-    /**
-     * Log an Error using FirebaseCrash
-     * @param {string} message
-     * @return {Promise<any>}
-     */
-    /**
-       * Log an Error using FirebaseCrash
-       * @param {string} message
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.logError = /**
-       * Log an Error using FirebaseCrash
-       * @param {string} message
-       * @return {Promise<any>}
-       */
-    function (message) {
+    FirebaseX.prototype.logEvent = function (type, data) {
         return;
     };
     /**
@@ -253,17 +198,7 @@ var Firebase = (function (_super) {
      * @param {string} name Screen name
      * @return {Promise<any>}
      */
-    /**
-       * Set the name of the current screen in Analytics
-       * @param {string} name Screen name
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.setScreenName = /**
-       * Set the name of the current screen in Analytics
-       * @param {string} name Screen name
-       * @return {Promise<any>}
-       */
-    function (name) {
+    FirebaseX.prototype.setScreenName = function (name) {
         return;
     };
     /**
@@ -271,17 +206,7 @@ var Firebase = (function (_super) {
      * @param {string} userId
      * @return {Promise<any>}
      */
-    /**
-       * Set a user id for use in Analytics
-       * @param {string} userId
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.setUserId = /**
-       * Set a user id for use in Analytics
-       * @param {string} userId
-       * @return {Promise<any>}
-       */
-    function (userId) {
+    FirebaseX.prototype.setUserId = function (userId) {
         return;
     };
     /**
@@ -290,516 +215,419 @@ var Firebase = (function (_super) {
      * @param {string} value
      * @return {Promise<any>}
      */
-    /**
-       * Set a user property for use in Analytics
-       * @param {string} name
-       * @param {string} value
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.setUserProperty = /**
-       * Set a user property for use in Analytics
-       * @param {string} name
-       * @param {string} value
-       * @return {Promise<any>}
-       */
-    function (name, value) {
+    FirebaseX.prototype.setUserProperty = function (name, value) {
         return;
     };
     /**
-     * Fetch Remote Config parameter values for your app
-     * @param {number} [cacheExpirationSeconds]
-     * @return {Promise<any>}
-     */
-    /**
-       * Fetch Remote Config parameter values for your app
-       * @param {number} [cacheExpirationSeconds]
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.fetch = /**
-       * Fetch Remote Config parameter values for your app
-       * @param {number} [cacheExpirationSeconds]
-       * @return {Promise<any>}
-       */
-    function (cacheExpirationSeconds) {
-        return;
-    };
-    /**
-     * Activate the Remote Config fetched config
-     * @return {Promise<any>}
-     */
-    /**
-       * Activate the Remote Config fetched config
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.activateFetched = /**
-       * Activate the Remote Config fetched config
-       * @return {Promise<any>}
-       */
-    function () {
-        return;
-    };
-    /**
-     * Retrieve a Remote Config value
-     * @param {string} key
-     * @param {string} [namespace]
-     * @return {Promise<any>}
-     */
-    /**
-       * Retrieve a Remote Config value
-       * @param {string} key
-       * @param {string} [namespace]
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.getValue = /**
-       * Retrieve a Remote Config value
-       * @param {string} key
-       * @param {string} [namespace]
-       * @return {Promise<any>}
-       */
-    function (key, namespace) {
-        return;
-    };
-    /**
-     * Retrieve a Remote Config byte array
-     * @param {string} key
-     * @param {string} [namespace]
-     * @return {Promise<any>}
-     */
-    /**
-       * Retrieve a Remote Config byte array
-       * @param {string} key
-       * @param {string} [namespace]
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.getByteArray = /**
-       * Retrieve a Remote Config byte array
-       * @param {string} key
-       * @param {string} [namespace]
-       * @return {Promise<any>}
-       */
-    function (key, namespace) {
-        return;
-    };
-    /**
-     * Get the current state of the FirebaseRemoteConfig singleton object
-     * @return {Promise<any>}
-     */
-    /**
-       * Get the current state of the FirebaseRemoteConfig singleton object
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.getInfo = /**
-       * Get the current state of the FirebaseRemoteConfig singleton object
-       * @return {Promise<any>}
-       */
-    function () {
-        return;
-    };
-    /**
-     * Change the settings for the FirebaseRemoteConfig object's operations
-     * @param {Object} settings
-     * @return {Promise<any>}
-     */
-    /**
-       * Change the settings for the FirebaseRemoteConfig object's operations
-       * @param {Object} settings
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.setConfigSettings = /**
-       * Change the settings for the FirebaseRemoteConfig object's operations
-       * @param {Object} settings
-       * @return {Promise<any>}
-       */
-    function (settings) {
-        return;
-    };
-    /**
-     * Set defaults in the Remote Config
-     * @param {Object} defaults
-     * @param {string} [namespace]
-     * @return {Promise<any>}
-     */
-    /**
-       * Set defaults in the Remote Config
-       * @param {Object} defaults
-       * @param {string} [namespace]
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.setDefaults = /**
-       * Set defaults in the Remote Config
-       * @param {Object} defaults
-       * @param {string} [namespace]
-       * @return {Promise<any>}
-       */
-    function (defaults, namespace) {
-        return;
-    };
-    /**
-     * Start a trace.
-     * @param {string} trace Trace name
-     */
-    /**
-       * Start a trace.
-       * @param {string} trace Trace name
-       */
-    Firebase.prototype.startTrace = /**
-       * Start a trace.
-       * @param {string} trace Trace name
-       */
-    function (trace) {
-        return;
-    };
-    /**
-     * To count the performance-related events that occur in your app (such as cache hits or retries), add a line of code
-     * similar to the following whenever the event occurs, using a string other than retry to name that event if you are
-     * counting a different type of event:
-     * @param {string} trace Trace name
-     * @param {string} counter Counter
-     */
-    /**
-       * To count the performance-related events that occur in your app (such as cache hits or retries), add a line of code
-       * similar to the following whenever the event occurs, using a string other than retry to name that event if you are
-       * counting a different type of event:
-       * @param {string} trace Trace name
-       * @param {string} counter Counter
-       */
-    Firebase.prototype.incrementCounter = /**
-       * To count the performance-related events that occur in your app (such as cache hits or retries), add a line of code
-       * similar to the following whenever the event occurs, using a string other than retry to name that event if you are
-       * counting a different type of event:
-       * @param {string} trace Trace name
-       * @param {string} counter Counter
-       */
-    function (trace, counter) {
-        return;
-    };
-    /**
-     * Stop the trace
-     * @param {string} trace Trace name
-     */
-    /**
-       * Stop the trace
-       * @param {string} trace Trace name
-       */
-    Firebase.prototype.stopTrace = /**
-       * Stop the trace
-       * @param {string} trace Trace name
-       */
-    function (trace) { };
-    /**
-     * Allows the user to enable/disable analytics collection
-     * @param {boolean} enabled value to set collection
+     * Set Crashlytics user identifier.
+     * To diagnose an issue, it’s often helpful to know which of your users experienced a given crash.
+     * Crashlytics includes a way to anonymously identify users in your crash reports.
+     * To add user IDs to your reports, assign each user a unique identifier in the form of an ID number, token, or hashed value.
+     *
+     * More info https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#set_user_ids
+     * @param {string} userId
      * @returns {Promise<any>}
      */
-    /**
-       * Allows the user to enable/disable analytics collection
-       * @param {boolean} enabled value to set collection
-       * @returns {Promise<any>}
-       */
-    Firebase.prototype.setAnalyticsCollectionEnabled = /**
-       * Allows the user to enable/disable analytics collection
-       * @param {boolean} enabled value to set collection
-       * @returns {Promise<any>}
-       */
-    function (enabled) {
+    FirebaseX.prototype.setCrashlyticsUserId = function (userId) {
         return;
     };
     /**
-     * Allows the user to set User Identifier for crashlytics reporting
-     * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#set_user_ids
-     * @param {string} userId value to set the userId
-     * @returns {Promise<any>}
+     * Simulates (causes) a fatal native crash which causes a crash event to be sent to Crashlytics (useful for testing).
+     * See the Firebase documentation regarding crash testing.
+     * Crashes will appear under Event type = "Crashes" in the Crashlytics console.
+     * @return {Promise<any>}
      */
-    /**
-       * Allows the user to set User Identifier for crashlytics reporting
-       * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#set_user_ids
-       * @param {string} userId value to set the userId
-       * @returns {Promise<any>}
-       */
-    Firebase.prototype.setCrashlyticsUserId = /**
-       * Allows the user to set User Identifier for crashlytics reporting
-       * https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0#set_user_ids
-       * @param {string} userId value to set the userId
-       * @returns {Promise<any>}
-       */
-    function (userId) {
+    FirebaseX.prototype.sendCrash = function () {
         return;
     };
     /**
-     * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
+     * Sends a crash-related log message that will appear in the Logs section of the next native crash event.
+     * Note: if you don't then crash, the message won't be sent! Also logs the message to the native device console.
+     * @param {string} message
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.logMessage = function (message) {
+        return;
+    };
+    /**
+     * Sends a non-fatal error event to Crashlytics. In a Cordova app, you may use this to log unhandled Javascript exceptions, for example.
+     * The event will appear under Event type = "Non-fatals" in the Crashlytics console.
+     * The error message will appear in the Logs section of the non-fatal error event.
+     * Also logs the error message to the native device console.
+     * @param {string} error
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.logError = function (error) {
+        return;
+    };
+    /**
+     * Request a verification ID and send a SMS with a verification code. Use them to construct a credential to sign in the user (in your app).
+     *
+     * More info:
+     * https://github.com/dpa99c/cordova-plugin-firebasex#verifyphonenumber
+     * https://firebase.google.com/docs/auth/android/phone-auth
+     * https://firebase.google.com/docs/reference/js/firebase.auth.Auth#signInWithCredential
+     * https://firebase.google.com/docs/reference/js/firebase.User#linkWithCredential
+     *
+     * NOTE: This will only work on physical devices.
+     *
+     * iOS will return: credential (string)
+     *
+     * Android will return:
+     * credential.verificationId (object and with key verificationId)
+     * credential.instantVerification (boolean) credential.code (string)
+     * (note that this key only exists if instantVerification is true)
+     *
+     * You need to use device plugin in order to access the right key.
+     * IMPORTANT NOTE: Android supports auto-verify and instant device verification.
+     * Therefore in that case it doesn't make sense to ask for an sms code as you won't receive one.
+     * In this case you'll get a credential.verificationId and a credential.code where code is the auto received verification code
+     * that would normally be sent via sms. To log in using this procedure you must pass this code to
+     * PhoneAuthProvider.credential(verificationId, code). You'll find an implementation example further below.
+     *
+     * When using node.js Firebase Admin-SDK, follow this tutorial:
+     * https://firebase.google.com/docs/auth/admin/create-custom-tokens
+     *
+     * Pass back your custom generated token and call
+     * firebase.auth().signInWithCustomToken(customTokenFromYourServer);
+     * instead of
+     * firebase.auth().signInWithCredential(credential)
+     *
+     * YOU HAVE TO COVER THIS PROCESS, OR YOU WILL HAVE ABOUT 5% OF USERS STICKING ON YOUR SCREEN, NOT RECEIVING ANYTHING
+     * If this process is too complex for you, use this awesome plugin
+     * https://github.com/chemerisuk/cordova-plugin-firebase-authentication
+     * It's not perfect but it fits for the most use cases and doesn't require calling your endpoint, as it has native phone auth support.
+     *
+     * Android
+     * To use this auth you need to configure your app SHA hash in the android app configuration in the firebase console.
+     * See https://developers.google.com/android/guides/client-auth to know how to get SHA app hash.
+     *
+     * iOS
+     * Setup your push notifications first, and verify that they are arriving on your physical device before you test this method.
+     * Use the APNs auth key to generate the .p8 file and upload it to firebase. When you call this method,
+     * FCM sends a silent push to the device to verify it.
+     *
      * @param {string} phoneNumber The phone number, including '+' and country code
      * @param {number} timeoutDuration (Android only) The timeout in sec - no more SMS will be sent to this number until this timeout expires
      * @returns {Promise<any>}
      */
-    /**
-       * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
-       * @param {string} phoneNumber The phone number, including '+' and country code
-       * @param {number} timeoutDuration (Android only) The timeout in sec - no more SMS will be sent to this number until this timeout expires
-       * @returns {Promise<any>}
-       */
-    Firebase.prototype.verifyPhoneNumber = /**
-       * Sends an SMS to the user with the SMS verification code and returns the Verification ID required to sign in using phone authentication
-       * @param {string} phoneNumber The phone number, including '+' and country code
-       * @param {number} timeoutDuration (Android only) The timeout in sec - no more SMS will be sent to this number until this timeout expires
-       * @returns {Promise<any>}
-       */
-    function (phoneNumber, timeoutDuration) {
+    FirebaseX.prototype.verifyPhoneNumber = function (phoneNumber, timeoutDuration) {
         if (timeoutDuration === void 0) { timeoutDuration = 0; }
         return;
     };
     /**
-     * Clear all pending notifications from the drawer
+     * Fetch Remote Config parameter values for your app.
+     * @param {number} cacheExpirationSeconds specify the cacheExpirationSeconds
      * @return {Promise<any>}
      */
-    /**
-       * Clear all pending notifications from the drawer
-       * @return {Promise<any>}
-       */
-    Firebase.prototype.clearAllNotifications = /**
-       * Clear all pending notifications from the drawer
-       * @return {Promise<any>}
-       */
-    function () {
+    FirebaseX.prototype.fetch = function (cacheExpirationSeconds) {
         return;
     };
-    Firebase.decorators = [
-        { type: Injectable },
-    ];
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "getToken", null);
-    __decorate([
-        Cordova({
-            observable: true
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Observable)
-    ], Firebase.prototype, "onTokenRefresh", null);
-    __decorate([
-        Cordova({
-            observable: true
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Observable)
-    ], Firebase.prototype, "onNotificationOpen", null);
-    __decorate([
-        Cordova({
-            platforms: ['iOS']
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "grantPermission", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "hasPermission", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "setBadgeNumber", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "getBadgeNumber", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "subscribe", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "unsubscribe", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "unregister", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String, Object]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "logEvent", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "logError", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "setScreenName", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "setUserId", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String, String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "setUserProperty", null);
-    __decorate([
-        Cordova({
-            successIndex: 1,
-            errorIndex: 2
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "fetch", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "activateFetched", null);
-    __decorate([
-        Cordova({
-            successIndex: 2,
-            errorIndex: 3
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String, String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "getValue", null);
-    __decorate([
-        Cordova({
-            platforms: ['Android']
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String, String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "getByteArray", null);
-    __decorate([
-        Cordova({
-            platforms: ['Android']
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "getInfo", null);
-    __decorate([
-        Cordova({
-            platforms: ['Android']
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "setConfigSettings", null);
-    __decorate([
-        Cordova({
-            platforms: ['Android']
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object, String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "setDefaults", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "startTrace", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String, String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "incrementCounter", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String]),
-        __metadata("design:returntype", void 0)
-    ], Firebase.prototype, "stopTrace", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Boolean]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "setAnalyticsCollectionEnabled", null);
-    __decorate([
-        Cordova(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "setCrashlyticsUserId", null);
-    __decorate([
-        Cordova({
-            platforms: ['Android', 'iOS'],
-            successIndex: 2,
-            errorIndex: 3
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String, Object]),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "verifyPhoneNumber", null);
-    __decorate([
-        Cordova({
-            platforms: ['Android']
-        }),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], Firebase.prototype, "clearAllNotifications", null);
     /**
-     * @name Firebase
-     * @description
-     * This plugin brings push notifications, analytics, event tracking, crash reporting and more from Google Firebase to your Cordova project! Android and iOS supported (including iOS 10).
-     *
-     * @usage
-     * ```typescript
-     * import { Firebase } from '@ionic-native/firebase';
-     *
-     * constructor(private firebase: Firebase) { }
-     *
-     * ...
-     *
-     * this.firebase.getToken()
-     *   .then(token => console.log(`The token is ${token}`)) // save the token server-side and use it to push notifications to this device
-     *   .catch(error => console.error('Error getting token', error));
-     *
-     * this.firebase.onNotificationOpen()
-     *    .subscribe(data => console.log(`User opened a notification ${data}`));
-     *
-     * this.firebase.onTokenRefresh()
-     *   .subscribe((token: string) => console.log(`Got a new token ${token}`));
-     *
-     * ```
+     * Activate the Remote Config fetched config.
+     * @return {Promise<any>}
      */
-    Firebase = __decorate([
-        Plugin({
-            pluginName: 'Firebase',
-            plugin: 'cordova-plugin-firebase',
-            pluginRef: 'FirebasePlugin',
-            repo: 'https://github.com/arnesson/cordova-plugin-firebase',
-            platforms: ['Android', 'iOS']
-        })
-    ], Firebase);
-    return Firebase;
+    FirebaseX.prototype.activateFetched = function () {
+        return;
+    };
+    /**
+     * Retrieve a Remote Config value.
+     * @param {string} key
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.getValue = function (key) {
+        return;
+    };
+    /**
+     * Android only. Retrieve a Remote Config byte array.
+     * @param {string} key
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.getByteArray = function (key) {
+        return;
+    };
+    /**
+     * Android only. Get the current state of the FirebaseRemoteConfig singleton object.
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.getInfo = function () {
+        return;
+    };
+    /**
+     * Android only. Change the settings for the FirebaseRemoteConfig object's operations.
+     * @param {Object} settings
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.setConfigSettings = function (settings) {
+        return;
+    };
+    /**
+     * Android only. Set defaults in the Remote Config.
+     * @param {Object} settings
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.setDefaults = function (settings) {
+        return;
+    };
+    /**
+     * Start a trace.
+     * @param {string} name
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.startTrace = function (name) {
+        return;
+    };
+    /**
+     * To count the performance-related events that occur in your app (such as cache hits or retries),
+     * add a line of code similar to the following whenever the event occurs,
+     * using a string other than retry to name that event if you are counting a different type of event.
+     * @param {string} name
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.incrementCounter = function (name) {
+        return;
+    };
+    /**
+     * Stop the trace.
+     * @param {string} name
+     * @return {Promise<any>}
+     */
+    FirebaseX.prototype.stopTrace = function (name) {
+        return;
+    };
+    return FirebaseX;
 }(IonicNativePlugin));
-export { Firebase };
+FirebaseX.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+FirebaseX.ctorParameters = function () { return []; };
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "getToken", null);
+__decorate([
+    Cordova({
+        observable: true
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Observable)
+], FirebaseX.prototype, "onTokenRefresh", null);
+__decorate([
+    Cordova({
+        observable: true
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Observable)
+], FirebaseX.prototype, "onMessageReceived", null);
+__decorate([
+    Cordova({
+        platforms: ['iOS']
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "grantPermission", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "hasPermission", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "unregister", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "setBadgeNumber", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "getBadgeNumber", null);
+__decorate([
+    Cordova({
+        platforms: ['Android']
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "clearAllNotifications", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "subscribe", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "unsubscribe", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "createChannel", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "setDefaultChannel", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "deleteChannel", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "listChannels", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Boolean]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "setAnalyticsCollectionEnabled", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "logEvent", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "setScreenName", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "setUserId", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "setUserProperty", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "setCrashlyticsUserId", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "sendCrash", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "logMessage", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "logError", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "verifyPhoneNumber", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "fetch", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "activateFetched", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "getValue", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "getByteArray", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "getInfo", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "setConfigSettings", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "setDefaults", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "startTrace", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "incrementCounter", null);
+__decorate([
+    Cordova(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], FirebaseX.prototype, "stopTrace", null);
+FirebaseX = __decorate([
+    Plugin({
+        pluginName: 'FirebaseX',
+        plugin: 'cordova-plugin-firebasex',
+        pluginRef: 'FirebasePlugin',
+        repo: 'https://github.com/dpa99c/cordova-plugin-firebasex',
+        platforms: ['Android', 'iOS']
+    })
+], FirebaseX);
+export { FirebaseX };
 //# sourceMappingURL=index.js.map
